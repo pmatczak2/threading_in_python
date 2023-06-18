@@ -25,7 +25,7 @@ if __name__ == "__main__":
     t.start()
     print('main ended')
 
-# if __name__ == "__main__":: This condition checks if the script is being run as the main module.
+# if __name__ == "__main__":: This condition checks if the scri pt is being run as the main module.
 # print('main started'): This line prints a message indicating that the main part of the script has started.
 # t = threading.Thread(target=myfunc, args=['realpython']): This line creates a new Thread object named t. The target
 # parameter specifies the function that will be executed in the new thread, which is myfunc in this case. The args
