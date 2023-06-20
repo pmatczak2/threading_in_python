@@ -16,7 +16,7 @@ if __name__ == "__main__":
     account = Account()
     print(f"starting with balance of {account.balance}")
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:
-        for transaction, amount in [('Deposit', 150), ('Withdrawal', -150)]:
+        for transaction, amount in [('Deposit', 50), ('Withdrawal', -150)]:
             ex.submit(account.update, transaction, amount)
     print(f'Ending balance of {account.balance}')
 
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 # worker threads.
 # - The code enters a loop that iterates over a list of transactions and amounts. For each iteration, it submits
 # a task to the thread pool using `ex.submit(account.update)`. This schedules the `update` method of the `account`
-# object to run concurrently in a separate thread, without passing any arguments.
+# ---object to run concurrently in a separate thread, without passing any arguments.
 # - Once all the tasks have been submitted to the thread pool, the code moves on to the next line.
 # - Finally, the ending balance of the account is printed, indicating the result of the concurrent updates to the
 # account balance.
