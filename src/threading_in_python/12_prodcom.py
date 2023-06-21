@@ -78,3 +78,16 @@ if __name__ == "__main__":
         ex.submit(consumer, pipeline)
     print(f"producer: {producer_pipeline}")
     print(f"consumer: {consumer_pipeline}")
+# Create a Pipeline object called pipeline with a capacity of 10.
+# Use a ThreadPoolExecutor from the concurrent.futures module to manage the execution of threads.
+# Within a context manager, submit the producer function and the consumer function as concurrent tasks to the executor.
+# The producer and consumer functions will be executed in separate threads, sharing the same pipeline object.
+# This allows for concurrent message production and consumption.
+# The max_workers argument is set to 2, meaning a maximum of 2 threads will be used for executing the tasks.
+# After the with block, the executor is automatically closed, ensuring proper cleanup.
+# Print the contents of producer_pipeline and consumer_pipeline, which should contain the produced and consumed
+# messages, respectively.
+
+#  In summary, the code creates a pipeline using the Pipeline class, where the producer produces random messages and
+#  sets them in the pipeline, while the consumer retrieves and consumes those messages. The ThreadPoolExecutor allows
+#  for concurrent execution of the producer and consumer functions, enabling efficient message processing.
