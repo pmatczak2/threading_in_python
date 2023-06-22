@@ -1,28 +1,21 @@
 import threading
-import concurrent.futures
-import time
 
-class Account:
-    def __init__(self):
-        self.balance = 100
-        self.lock = threading.Lock()
-    def update(self, transaction, amount):
-        print(f'{transaction} thread updating...')
-        with self.lock:
-            local_copy = self.balance
-            local_copy += amount
-            time.sleep(1)
-            self.balance = local_copy
-        print(f'{transaction} thread finishing...')
-
-if __name__ == "__main__":
-    account = Account()
-    print(f"starting with balance of {account.balance}")
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:
-        for transaction, amount in [('Deposit', 50), ('Withdrawal', -150)]:
-            ex.submit(account.update, transaction, amount)
-    print(f'Ending balance of {account.balance}')
-
+# In the context of multithreading and parallel execution, a lock is a synchronization mechanism used to protect shared
+# resources or critical sections of code. It ensures that only one thread can access the protected resource or execute
+# the critical section at a time, preventing concurrent access and potential conflicts.
+#
+# A lock typically has two states: locked and unlocked. When a thread acquires a lock, it becomes the owner and enters
+# the locked state, allowing it to access the protected resource or execute the critical section. Other threads
+# attempting to acquire the same lock while it is locked will be blocked and put into a waiting state until the
+# lock is released.
+#
+# The primary purpose of using locks is to prevent data races and maintain consistency in shared data. By acquiring a
+# lock before accessing or modifying shared resources, threads can take turns executing the critical section, ensuring
+# that no two threads access the resource simultaneously. This helps avoid race conditions, conflicts, and
+# inconsistencies that can occur when multiple threads concurrently modify shared data.
+#
+# Locks can be implemented using various techniques, such as mutexes, semaphores, or condition variables, depending on
+# the specific requirements and synchronization primitives provided by the programming language or library.
 
 lock = threading.Lock()
 print(lock)
